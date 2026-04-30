@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,sans-serif;background:transparent;color:#1f2937}
+  .bar-row{display:flex;align-items:center;margin-bottom:10px;gap:10px}
+  .bar-label{width:100px;text-align:right;font-size:0.88rem;font-weight:600;color:#374151;flex-shrink:0}
+  .bar-track{flex:1;height:32px;background:#e5e7eb;border-radius:6px;position:relative;overflow:hidden;cursor:pointer}
+  .bar-fill{height:100%;border-radius:6px;transition:width 0.6s ease;position:relative}
+  .bar-fill.agri{background:linear-gradient(90deg,#6b8e23,#8fbc3f)}
+  .bar-fill.ind{background:linear-gradient(90deg,#6b7280,#9ca3af)}
+  .bar-fill.svc{background:linear-gradient(90deg,#2563eb,#3b82f6)}
+  .bar-pct{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:0.82rem;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
+  .tooltip{display:none;position:absolute;bottom:110%;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:6px 12px;border-radius:6px;font-size:0.78rem;white-space:nowrap;z-index:10;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+  .tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1f2937}
+  .bar-track:hover .tooltip{display:block}
+</style>
+</head><body>
+  <div class="bar-row">
+    <div class="bar-label">Agriculture</div>
+    <div class="bar-track" style="position:relative">
+      <div class="bar-fill agri" style="width:28%"><span class="bar-pct">28%</span></div>
+      <div class="tooltip">Agriculture employs 28% of workers on average. Most sensitive to conflict.</div>
+    </div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Industry</div>
+    <div class="bar-track" style="position:relative">
+      <div class="bar-fill ind" style="width:20%"><span class="bar-pct">20%</span></div>
+      <div class="tooltip">Industry employs only 20% — the smallest sector. Conflict deters long-term investment.</div>
+    </div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">Services</div>
+    <div class="bar-track" style="position:relative">
+      <div class="bar-fill svc" style="width:52%"><span class="bar-pct">52%</span></div>
+      <div class="tooltip">Services dominate at 52%, but many are informal and low-productivity.</div>
+    </div>
+  </div>
+</body></html>

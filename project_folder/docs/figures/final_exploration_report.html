@@ -1,0 +1,280 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conflict EDA Report (1996-2023)</title>
+  <style>
+    :root { --bg:#f7f7f7; --ink:#1f2937; --muted:#6b7280; --card:#ffffff; --line:#e5e7eb; --accent:#b91c1c; }
+    body { margin:0; font-family: 'Avenir Next', 'Segoe UI', sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+    .wrap { max-width:1080px; margin:0 auto; padding:28px 20px 56px; }
+    .hero { background:linear-gradient(120deg,#111827,#1f2937 65%,#7f1d1d); color:#fff; border-radius:16px; padding:28px; margin-bottom:22px; }
+    h1,h2,h3 { margin:.2em 0 .5em; }
+    h1 { font-size:2rem; letter-spacing:.2px; }
+    h2 { border-bottom:2px solid var(--line); padding-bottom:6px; margin-top:28px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin:14px 0; }
+    .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+    .kpi { background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px; }
+    .kpi .label { color:var(--muted); font-size:.9rem; }
+    .kpi .value { font-size:1.4rem; font-weight:700; color:var(--accent); }
+    img { width:100%; border:1px solid var(--line); border-radius:10px; margin:10px 0 16px; }
+    .table { border-collapse:collapse; width:100%; font-size:.93rem; }
+    .table th,.table td { border:1px solid #e5e7eb; padding:6px 8px; text-align:left; }
+    .table th { background:#f3f4f6; }
+    .small { color:var(--muted); font-size:.9rem; }
+    .ref a { color:#0f766e; text-decoration:none; }
+    .insight { background:#fef3c7; border-left:4px solid #f59e0b; padding:12px; margin:10px 0; border-radius:0 8px 8px 0; }
+    .insight strong { color:#92400e; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Conflict Dynamics, Socio-Economic Structure, and Governance (1996-2023)</h1>
+      <p>Exploratory report on the integrated country-year dataset from ACLED, World Bank indicators, and V-Dem governance measures.</p>
+      <p class="small">Built from <code>outputs/cleaned_enhanced_data.csv</code> | Rows: 7,376 | Countries: 265</p>
+    </section>
+
+    <h2>1. Descriptive Overview</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="label">Average conflict events per country-year</div><div class="value">235.53</div></div>
+      <div class="kpi"><div class="label">Maximum conflict events in one country-year</div><div class="value">6764</div></div>
+      <div class="kpi"><div class="label">Year range</div><div class="value">1996-2023</div></div>
+      <div class="kpi"><div class="label">Country-year observations</div><div class="value">7,376</div></div>
+    </div>
+
+    <div class="card">
+      <h3>Global labor structure averages (1996-2023)</h3>
+      <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>global_average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>employment_agriculture_pct</th>
+      <td>28.043</td>
+    </tr>
+    <tr>
+      <th>employment_industry_pct</th>
+      <td>19.961</td>
+    </tr>
+    <tr>
+      <th>employment_services_pct</th>
+      <td>51.996</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+    <div class="card">
+      <h3>Missingness diagnostics</h3>
+      <p><b>By year (V-Dem and GDP):</b></p>
+      <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vdem_rule_index</th>
+      <th>gdp_per_capita_constant_2015_usd</th>
+    </tr>
+    <tr>
+      <th>year</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2009</th>
+      <td>114</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>114</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2011</th>
+      <td>114</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>114</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>114</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>114</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2015</th>
+      <td>114</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2016</th>
+      <td>114</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2017</th>
+      <td>114</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2018</th>
+      <td>114</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2019</th>
+      <td>114</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2020</th>
+      <td>114</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2021</th>
+      <td>114</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2022</th>
+      <td>114</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2023</th>
+      <td>114</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+      <p><b>By region (where ACLED region mapping is available):</b></p>
+      <table class="dataframe table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vdem_rule_index</th>
+      <th>gdp_per_capita_constant_2015_usd</th>
+    </tr>
+    <tr>
+      <th>region</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Eastern Africa</th>
+      <td>15</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>Middle Africa</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Northern Africa</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Southern Africa</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Western Africa</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+    <h2>2. Pattern and Trend Visualization</h2>
+    <p>The trend profile shows strong acceleration in recorded conflict events after the mid-2010s, while average GDP and governance indicators change more gradually.</p>
+    <img src="assets/trend_conflict_gdp_vdem.png" alt="Global conflict trend with GDP and V-Dem overlay" />
+
+    <p>Conflict burden is concentrated in a small set of countries with persistently high totals.</p>
+    <img src="assets/top10_conflict_countries.png" alt="Top 10 countries by total conflict events" />
+
+    <p>The causal diagram illustrates two mechanisms through which violence slows the structural shift out of agriculture: investment deterrence (infrastructure destruction, capital flight) and human capital depletion (deaths, displacement, school closures).</p>
+    <img src="assets/figure3_causal_diagram.png" alt="Causal diagram: pathways from conflict to agricultural employment" />
+    <img src="assets/scatter_conflict_agri.png" alt="Conflict versus agriculture employment scatter" />
+
+    <p>Governance split indicates higher median and upper-tail conflict in the low V-Dem group.</p>
+    <img src="assets/boxplot_conflict_vdem_groups.png" alt="Conflict boxplot by V-Dem group" />
+
+    <h2>3. Correlation and Statistical Checks</h2>
+    <img src="assets/heatmap_correlation_enhanced.png" alt="Enhanced correlation heatmap with significance stars" />
+
+    <div class="card">
+      <h3>Key Correlation Insights (|r| > 0.4 or theoretically interesting pairs)</h3>
+      
+<table class="table">
+  <thead><tr><th>Pair</th><th>r</th><th>p-value</th><th>Significant</th><th>Strength</th></tr></thead>
+  <tbody><tr><td>Conflict vs Governance</td><td>-0.117*</td><td>0.0213</td><td>Yes</td><td>Weak</td></tr><tr><td>Conflict vs GDP</td><td>0.066</td><td>0.1936</td><td>No</td><td>Weak</td></tr><tr><td>Conflict vs Agriculture</td><td>-0.111*</td><td>0.0286</td><td>Yes</td><td>Weak</td></tr><tr><td>Agriculture vs GDP</td><td>-0.672***</td><td>0.0000</td><td>Yes</td><td>Strong</td></tr><tr><td>Services vs GDP</td><td>0.665***</td><td>0.0000</td><td>Yes</td><td>Strong</td></tr><tr><td>Agriculture vs Services</td><td>-0.954***</td><td>0.0000</td><td>Yes</td><td>Strong</td></tr><tr><td>Fatalities vs Events</td><td>0.715***</td><td>0.0000</td><td>Yes</td><td>Strong</td></tr><tr><td>Governance vs GDP</td><td>0.115*</td><td>0.0241</td><td>Yes</td><td>Weak</td></tr></tbody>
+</table>
+
+      <p class="small">Significance levels: * p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001</p>
+    </div>
+
+    <h3>Scatterplot Matrix: Top 6 Variables</h3>
+    <p>The scatterplot matrix reveals non-linear patterns and outliers in the most correlated variables with conflict events.</p>
+    <img src="assets/scatterplot_matrix_top6.png" alt="Scatterplot matrix of top 6 variables" />
+
+    <h3>Principal Component Analysis</h3>
+    <p>PCA on employment sectors, GDP, and governance reveals a dominant "development" dimension (PC1 explains 66.3% of variance). PC1+PC2 together explain 83.2% of variance.</p>
+    <img src="assets/pca_scree_plot.png" alt="PCA scree plot and cumulative variance" />
+
+    <div class="insight">
+      <strong>Key Finding:</strong> The three employment sectors (agriculture, industry, services) are highly correlated with each other and with GDP, confirming they represent a single "development dimension." This suggests that in papers/presentations, these variables can be reduced to a composite index rather than analyzed separately.
+    </div>
+
+    <div class="card">
+      <h3>Low GDP vs High GDP t-test</h3>
+      <ul>
+        <li>Low GDP mean conflict: <b>231.014</b></li>
+        <li>High GDP mean conflict: <b>252.370</b></li>
+        <li>t-statistic: <b>-0.433</b></li>
+        <li>p-value: <b>0.665874</b></li>
+        <li>Significant at 5% level: <b>False</b></li>
+      </ul>
+    </div>
+
+    <h2>4. Key Takeaways</h2>
+    <div class="card">
+      <ol>
+        <li>Conflict intensity is highly skewed: most country-years have low values, but a small set exhibits very high spikes.</li>
+        <li>Simple bivariate relationships with GDP and labor shares are visible but weak in pooled linear correlation terms.</li>
+        <li>Institutional quality (V-Dem rule index) shows a negative association with conflict and clearer distributional separation in boxplots.</li>
+        <li>Missingness is structurally non-random (especially governance coverage), so interpretation should acknowledge data availability constraints.</li>
+        <li>PCA confirms employment sectors, GDP, and governance load on a single "development" dimension, suggesting composite indices may be more powerful than individual variables.</li>
+      </ol>
+    </div>
+
+    <h2>References</h2>
+    <p class="ref">Presentation style inspiration: 
+      <a href="https://acleddata.com/report/whats-driving-conflict-today-review-global-trends" target="_blank">ACLED global trend brief</a> and 
+      <a href="https://acleddata.com/report/exhausted-ukraine-faces-military-and-diplomatic-pressure-cede-donbas" target="_blank">ACLED country-focused brief</a>.
+    </p>
+  </div>
+</body>
+</html>

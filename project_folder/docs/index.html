@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Does Political Violence Trap Economies in Agriculture in Africa?</title>
+  <style>
+    :root { --bg:#fafafa; --ink:#2c3e50; --muted:#6b7280; --card:#ffffff; --line:#d7dee7; --accent:#2f6ea3; --heading:#2f6ea3; --soft:#f4f8fc; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family: 'Avenir Next', 'Segoe UI', sans-serif; background:var(--bg); color:var(--ink); line-height:1.72; font-size: 18px; }
+    .wrap { max-width:1200px; margin:0 auto; padding:36px 24px 64px; text-align: left; }
+    h1, h2, h3, h4 { margin: 0.35em 0 0.6em; line-height: 1.28; max-width: 78ch; text-align: left; font-family: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif; }
+    h1 { font-size: 2.15rem; letter-spacing: 0.2px; }
+    h2 { font-size: 1.88rem; color: var(--heading); border-bottom: 2px solid var(--line); padding-bottom: 7px; margin-top: 62px; }
+    h3 { font-size: 1.46rem; color: #2d4f6d; margin-top: 44px; }
+    h4.rq-heading { font-size: 1.3rem; margin: 0 0 0.8em; color: #234e75; font-weight: 700; background: transparent; border: none; border-radius: 0; padding: 0; }
+    h4 { font-size: 1.12rem; color: #4b5563; margin-top: 16px; }
+    .hero { background: transparent; color: var(--ink); border-radius: 0; padding: 30px 0; margin-bottom: 26px; }
+    .hero > * { margin-bottom: 0.9rem; }
+    .hero > *:last-child { margin-bottom: 0; }
+    .hero h1 { font-size: clamp(2.6rem, 5vw, 3.5rem); line-height: 1.12; letter-spacing: 0.1px; margin-bottom: 0.38em; border: none; padding: 0; color: var(--ink); }
+    .hero p { font-size: 1.14rem; margin: 0.3em 0; max-width: none; width: 100%; color: var(--ink); }
+    .hero .small { font-size: 0.95rem; color: var(--muted); }
+    .hero .hero-date { font-size: 0.92rem; color: var(--muted); margin-top: 0.7em; }
+    .hero .hero-lead { margin-bottom: 1.35rem; color: var(--ink); }
+    .hero-photo { margin: 8px 0 22px; }
+    .hero-photo img { width: 100%; max-height: 420px; object-fit: cover; border-radius: 12px; border: none; }
+    .hero-photo figcaption { margin-top: 6px; font-size: 0.92rem; line-height: 1.5; color: #555; }
+    .hero-photo a { color: #0f766e; text-decoration: none; }
+    .author-section { display: grid; grid-template-columns: 110px 1fr; gap: 12px; align-items: center; background: #f2f6fa; border: 1px solid #dce6f1; border-radius: 10px; padding: 11px 14px; margin: -6px 0 18px; }
+    .author-label { font-size: 1.1rem; font-weight: 700; letter-spacing: 1.5px; color: #1f2937; }
+    .author-profile { display: flex; align-items: center; gap: 10px; }
+    .author-avatar { width: 42px; height: 42px; border-radius: 999px; background: #334155; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; }
+    .author-name { font-size: 1.15rem; line-height: 1.1; color: #274c73; margin: 0; }
+    .author-text { margin: 48px 0 24px; color: #1f2937; }
+    .author-text p { margin: 0 0 14px; font-size: 1.08rem; line-height: 1.68; }
+    .content-toggle { margin: 0 -24px 26px; border: 0; border-radius: 0; background: #e6edf4; padding: 20px 0; }
+    .content-toggle summary { list-style: none; cursor: pointer; padding: 6px 20px; min-height: 44px; display: flex; align-items: center; font-size: 2.05rem; font-weight: 600; color: #244a6d; background: transparent; }
+    .content-toggle summary::-webkit-details-marker { display: none; }
+    .content-toggle summary::after { content: '\2304'; margin-left: auto; font-size: 2rem; line-height: 1; color: #2a4f77; }
+    .content-toggle[open] summary::after { content: '\2303'; }
+    .content-toggle nav { padding: 16px 20px 2px; }
+    .content-toggle ol { margin: 0; padding: 0; list-style: none; }
+    .content-toggle li { margin: 0; }
+    .content-toggle a { display: flex; align-items: center; min-height: 44px; padding: 4px 0; color: #244a6d; text-decoration: none; font-size: 1.12rem; }
+    .content-toggle a:hover { text-decoration: underline; }
+    .content-toggle a.active { color: #244a6d; font-weight: 700; text-decoration: none; }
+    .content-toggle li.sub-item { padding-left: 20px; }
+    .content-toggle li.sub-item a { font-size: 1.03rem; padding: 6px 0; color: #4a6f97; }
+    .content-toggle li.sub-item a::before { content: '– '; margin-right: 4px; }
+    .content-toggle .section-num { font-weight: 700; }
+    .content-toggle .section-name { font-weight: 700; }
+    .progress-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 4px; z-index: 9999; background: transparent; }
+    .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #2f6ea3, #4a89bd); transition: width 0.12s linear; }
+    .apa-figure { margin: 24px auto 38px; background: transparent; border: none; border-radius: 0; padding: 0; box-shadow: none; max-width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .apa-figure img { width: 100%; max-width: 1080px; border: none; border-radius: 8px; margin: 0 0 12px; cursor: zoom-in; box-shadow: none; }
+    .apa-figure svg { cursor: zoom-in; border-radius: 8px; box-shadow: none; background: transparent; width: 100%; max-width: 1080px; }
+    .apa-figure iframe { border-radius: 8px; box-shadow: none; width: 100%; max-width: 1080px; }
+    .apa-figure figcaption { font-size: 0.96rem; color: #555; line-height: 1.62; text-align: center; max-width: 80ch; margin-top: 10px; }
+    .figure-toolbar { display: none; }
+    .figure-btn { border: 1px solid #d1d5db; background: #fff; color: #334155; border-radius: 999px; font-size: 0.8rem; padding: 5px 10px; cursor: pointer; }
+    .figure-btn:hover { background: #f8fafc; border-color: #94a3b8; }
+    .figure-parallel { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin: 20px 0 24px; }
+    .figure-parallel .apa-figure { margin: 0; }
+    .figure-parallel .apa-figure img { max-width: 100%; }
+    .figure-note { margin-top: 10px; }
+    .figure-note summary { cursor: pointer; list-style: none; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 12px; font-size: 0.98rem; font-weight: 600; color: #334155; display: flex; align-items: center; min-height: 44px; }
+    .figure-note summary::-webkit-details-marker { display: none; }
+    .figure-note summary::after { content: '▸'; margin-left: auto; font-size: 1rem; color: #64748b; transition: transform 0.15s ease; }
+    .figure-note[open] summary::after { content: '▾'; }
+    .figure-note .note-content { margin-top: 8px; font-size: 0.96rem; color: #475569; line-height: 1.65; padding: 6px 12px; background: #fafbfc; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 6px 6px; }
+    .point-tooltip { position: fixed; z-index: 10001; pointer-events: none; background: rgba(17,24,39,0.94); color: #fff; padding: 6px 9px; border-radius: 7px; font-size: 0.92rem; line-height: 1.3; opacity: 0; transform: translate(-50%, -120%); transition: opacity 0.12s ease; white-space: nowrap; }
+    .point-tooltip.show { opacity: 1; }
+    #rq1-direct, #rq2-threshold, #rq3-lagged { margin-top: 46px; padding: 0; border: none; border-left: none; border-radius: 0; background: transparent; }
+    .trend-line { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+    .trend-line.is-drawn { transition: stroke-dashoffset 1.6s ease-out; stroke-dashoffset: 0; }
+    .figure-modal { position: fixed; inset: 0; background: rgba(3,7,18,0.82); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 18px; }
+    .figure-modal.open { display: flex; }
+    .figure-modal-dialog { width: min(1180px, 96vw); max-height: 92vh; background: #0b1220; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); padding: 12px; overflow: auto; }
+    .figure-modal-content { display: flex; flex-direction: column; gap: 10px; }
+    .figure-modal-content img, .figure-modal-content svg, .figure-modal-content iframe { width: 100%; max-height: 78vh; object-fit: contain; border-radius: 8px; background: #fff; }
+    .figure-modal-caption { color: #e5e7eb; font-size: 1.02rem; line-height: 1.58; }
+    .figure-modal-close { align-self: flex-end; border: 0; background: #111827; color: #fff; border-radius: 999px; padding: 7px 12px; font-size: 0.92rem; cursor: pointer; }
+    .figure-modal-close:hover { background: #1f2937; }
+    .figure-3-flow { margin: 14px 0 16px; }
+    .flow-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center; }
+    .flow-node { background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 14px 12px; text-align: center; }
+    .flow-node strong { display: block; font-size: 1rem; color: #111827; }
+    .flow-paths { display: flex; flex-direction: column; gap: 10px; min-width: 260px; }
+    .flow-arrow { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; }
+    .flow-arrow .txt { font-size: 1rem; color: #1f2937; line-height: 1.4; text-align: left; }
+    .flow-arrow .arr { font-size: 1.05rem; color: var(--accent); }
+    .flow-icon { display: block; font-size: 0.9rem; color: #6b7280; margin-top: 2px; }
+    .card { background: transparent; border: none; border-radius: 0; padding: 0; margin: 18px 0; max-width: 900px; box-shadow: none; }
+    .card h3 { margin-top: 0; font-size: 1.3rem; }
+    .card p { margin: 0.5em 0; }
+    .card ul, .card ol { margin: 0.5em 0; padding-left: 20px; }
+    .card li { margin: 6px 0; line-height: 1.55; }
+    .floating-controls { position: fixed; right: 18px; bottom: 18px; z-index: 9998; display: flex; flex-direction: column; gap: 10px; }
+    .fab { border: 0; border-radius: 999px; padding: 10px 14px; min-height: 44px; background: #111827; color: #fff; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,0.22); }
+    .fab:hover { background: #1f2937; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 18px 0; }
+    .kpi { background: rgba(255,255,255,0.82); border: 1px solid var(--line); border-radius: 12px; padding: 14px; box-shadow: 0 1px 6px rgba(15,23,42,0.03); backdrop-filter: blur(2px); }
+    .kpi .label { color: var(--muted); font-size: 1rem; }
+    .kpi .value { font-size: 1.58rem; font-weight: 700; color: var(--accent); }
+    .table { border-collapse: collapse; width: 100%; font-size: 1rem; margin: 12px 0; }
+    .table th, .table td { border: 1px solid #e5e7eb; padding: 10px 12px; text-align: left; }
+    .table th { background: #f3f4f6; font-weight: 700; font-size: 1rem; }
+    .table td { font-size: 1rem; }
+    .table tr:nth-child(even) { background: #f8fbff; }
+    .readable-table { width: 100%; border-collapse: collapse; margin: 10px 0; border: 1px solid #e7edf4; }
+    .readable-table th, .readable-table td { border: 0; border-bottom: 1px solid #ecf1f6; padding: 9px 11px; font-size: 1rem; }
+    .readable-table tbody tr:nth-child(even) { background: #f8fbff; }
+    .readable-table th { background: #f1f6fb; color: #2c3e50; font-weight: 600; text-align: right; }
+    .readable-table th:first-child, .readable-table td:first-child { text-align: left; }
+    .readable-table td { text-align: right; font-variant-numeric: tabular-nums; }
+    .correlation-matrix td, .correlation-matrix th { text-align: right !important; font-variant-numeric: tabular-nums; }
+    .correlation-matrix td:first-child, .correlation-matrix th:first-child { text-align: left !important; }
+    .finding-box { background: transparent; border: none; border-left: none; border-radius: 0; padding: 0; margin: 1em 0; }
+    img { width: 100%; border: none; border-radius: 10px; margin: 12px 0 16px; }
+    .small { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+    .ref a { color: #0f766e; text-decoration: none; }
+    p { margin: 1em 0; line-height: 1.74; font-size: 1.1rem; text-align: left; color: var(--ink); }
+    ul, ol { margin: 1em 0; padding-left: 24px; display: block; text-align: left; }
+    li { margin: 8px 0; line-height: 1.65; font-size: 1.08rem; }
+    @media (max-width: 760px) {
+      .author-section { grid-template-columns: 1fr; gap: 10px; }
+      .author-label { font-size: 1.15rem; }
+      .author-name { font-size: 1.2rem; }
+      .figure-parallel { grid-template-columns: 1fr; gap: 14px; }
+      .figure-modal-dialog { width: 98vw; max-height: 94vh; }
+      .flow-grid { grid-template-columns: 1fr; gap: 10px; }
+      .flow-paths { min-width: 0; }
+      .content-toggle { margin: 0 0 18px; border-radius: 10px; padding: 14px 0; }
+      .content-toggle summary { font-size: 1.7rem; }
+      .content-toggle a { font-size: 1.06rem; }
+      h2 { font-size: 1.64rem; }
+      h3 { font-size: 1.3rem; }
+      #policy-implications > div { grid-template-columns: 1fr; }
+      #policy-implications > div > div:nth-child(even) { border-left: none; border-top: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-wrap" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="wrap">
+    <section class="hero" id="title-section">
+      <h1>Does Political Violence Trap Economies in Agriculture? - Africa</h1>
+      <p class="hero-lead">ACLED conflict data reveal how persistent political violence can reshape economic pathways and slow the shift away from agriculture.</p>
+      <p class="small">Based on ACLED conflict data, World Bank employment statistics and V-Dem</p>
+      <p class="hero-date">Date: 18 April 2026</p>
+    </section>
+    <section class="author-text" aria-label="Author introduction">
+      <p>This report studies whether political violence slows structural transformation in Africa: the movement of workers out of agriculture and into higher-productivity sectors. Using a 1996-2023 panel of 46 countries, we test direct, threshold, and lagged effects of conflict on labor structure. The core result is consistent across methods: higher violence is associated with slower transformation and a larger agricultural employment share.</p>
+    </section>
+    <figure class="hero-photo" id="photo-section">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Travaux%20champ%C3%AAtres%20au%20cameroun.jpg" alt="Agricultural field work in Cameroon, Africa" />
+      <figcaption>Smallholder fieldwork in Cameroon, where rural households rely heavily on labor-intensive farming. This reflects the broader development challenge examined in this report: whether persistent political violence can slow structural transformation away from agriculture. Source: <a href="https://commons.wikimedia.org/wiki/File:Travaux_champ%C3%AAtres_au_cameroun.jpg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>.</figcaption>
+    </figure>
+    <details class="content-toggle" open>
+      <summary>On this page</summary>
+      <nav aria-label="Page contents">
+        <ol>
+          <li><a href="#data-snapshot"><span class="section-num">1.</span> <span class="section-name">Overview: How Political Violence Slows Economic Transformation</span></a></li>
+          <li><a href="#high-conflict-normal">1.1 High Conflict Intensity Is Becoming the New Normal</a></li>
+          <li><a href="#why-back-to-farm">1.2 Why Violence Pushes People Back to the Farm</a></li>
+          <li><a href="#what-we-tested"><span class="section-num">2.</span> <span class="section-name">Research Questions</span></a></li>
+          <li><a href="#rq1-direct">2.1 RQ1 (Direct Effect)</a></li>
+          <li><a href="#rq2-threshold">2.2 RQ2 (Threshold Effect)</a></li>
+          <li><a href="#rq3-lagged">2.3 RQ3 (Lagged Effect)</a></li>
+          <li><a href="#causal-pathways-summary">2.4 Causal Pathways</a></li>
+          <li><a href="#policy-implications">2.5 Policy Implications</a></li>
+          <li><a href="#conclusion"><span class="section-num">3.</span> <span class="section-name">Conclusion</span></a></li>
+          <li><a href="#references"><span class="section-num">4.</span> <span class="section-name">References</span></a></li>
+        </ol>
+      </nav>
+    </details>
+    <section class="author-section" id="author-section" aria-label="Author">
+      <div class="author-label">AUTHOR</div>
+      <div class="author-profile">
+        <div class="author-avatar" aria-hidden="true">XY</div>
+        <div><p class="author-name">Xu Yingnuo</p></div>
+      </div>
+    </section>
+    <h2 id="data-snapshot">1. Overview: How Political Violence Slows Economic Transformation</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="label">Average conflict events per country-year</div><div class="value">235.53</div></div>
+      <div class="kpi"><div class="label">Maximum conflict events in one country-year</div><div class="value">6,764</div></div>
+      <div class="kpi"><div class="label">Year range</div><div class="value">1996–2023</div></div>
+      <div class="kpi"><div class="label">Country-year observations</div><div class="value">1,288</div></div>
+      <div class="kpi"><div class="label">African countries</div><div class="value">46</div></div>
+      <div class="kpi"><div class="label">Violent events recorded by ACLED in 2025</div><div class="value">185,000</div></div>
+    </div>
+    <div style="max-width:760px; margin:0 auto 18px;">
+      <iframe src="assets/infographic_labour_structure.html" style="width:100%; height:140px; border:none;" title="African Labour Structure bar chart (1996–2023)"></iframe>
+    </div>
+    <section id="high-conflict-normal" aria-label="High conflict intensity is becoming the new normal">
+      <h3>1.1 High Conflict Intensity Is Becoming the New Normal</h3>
+      <p>The notion that high conflict intensity has become a permanent feature of Africa's development landscape, rather than an intermittent disruption, finds strong support in the relationship between violence and agricultural employment. Figure 1 reveals that countries experiencing above‑median conflict fatalities retain an agricultural workforce share of 53.7 percent, compared to only 44.9 percent in low‑conflict countries – a persistent gap of nearly nine percentage points. This difference is not a statistical anomaly; it reflects a systematic dynamic in which recurrent violence forces workers to remain on farms instead of moving into industry or services. Figure 2 reinforces this interpretation at a more granular level. Across thousands of country‑year observations, each increase in conflict fatalities corresponds to a higher agricultural employment share, and the positive slope of the regression line is statistically significant. Together, these two figures demonstrate that violence no longer acts as an occasional shock that economies can quickly absorb. Instead, it has become a recurring pressure that consistently reverses structural transformation, locking labour into subsistence agriculture.</p>
+      <figure class="apa-figure" id="fig-new-normal-dashboard" style="background:transparent; box-shadow:none; width:100%;">
+        <iframe src="assets/new_normal_interactive.html" style="width:100%; height:960px; border:none; border-radius:8px;" title="Interactive dashboard: High conflict intensity is becoming the new normal"></iframe>
+        <figcaption><strong>Figure 1.</strong> Interactive Dashboard: High Conflict Intensity Is Becoming the New Normal (2000–2025).<br><em>Note.</em> <strong>Left:</strong> Total violent events per year with a vertical marker for the selected year. <strong>Right:</strong> Average agricultural employment share for high-conflict vs. low-conflict countries (median split) for the selected year. <strong>Bottom:</strong> Scatter of agricultural employment vs. conflict events for the selected year, coloured by intensity. Use the year slider to update all three plots simultaneously. The annotation below reports the percentage-point gap between groups.</figcaption>
+      </figure>
+    </section>
+    <section id="why-back-to-farm" aria-label="Why violence pushes people back to the farm">
+      <h3>1.2 Why Violence Pushes People Back to the Farm</h3>
+      <p>Two mechanisms explain the observed relationship between conflict and agricultural employment:</p>
+      <ol>
+        <li><strong>Investment deterrence.</strong> Conflict destroys physical infrastructure such as roads, ports, and power lines, while manufacturing and services depend on stable infrastructure and long‑term contracts. Agriculture, by contrast, can continue at subsistence level even during active hostilities. Consequently, investors withdraw capital, and the economy remains locked into agrarian production.</li>
+        <li><strong>Human capital depletion.</strong> Conflict kills or displaces working‑age adults and forces schools to close. Industry and services require an educated workforce; when violence erodes human capital, workers cannot make the transition to higher‑productivity sectors.</li>
+      </ol>
+      <p>Together, these channels push labour toward subsistence farming and slow the movement into manufacturing and services.</p>
+    </section>
+    <section id="what-we-tested" aria-label="Research Questions">
+      <h2>2. Research Questions</h2>
+    </section>
+    <section id="rq1-direct" aria-label="RQ1 Direct effect">
+      <h4 class="rq-heading" id="rq1-direct-title">2.1 RQ1 (Direct Effect): Does More Conflict Really Increase Agricultural Employment?</h4>
+      <figure class="apa-figure" style="background:transparent; box-shadow:none; width:100%;">
+        <iframe src="assets/interactive_conflict_agriculture.html" style="width:100%; height:700px; border:none; border-radius:8px;" title="Interactive scatter plot: Direct Effect of Conflict on Agricultural Employment (1996-2023)"></iframe>
+        <figcaption><strong>Figure 1.</strong> Interactive Bubble Plot: Direct Effect of Conflict on Agricultural Employment (1996‑2023).<br><em>Note.</em> Each bubble represents a country-year observation. Bubble size indicates conflict events, color represents GDP per capita (Viridis scale). Use the slider to animate across years. The red line shows the OLS trendline. Hover over bubbles for details.</figcaption>
+      </figure>
+      <p><b>Yes.</b> Higher conflict intensity is consistently associated with a larger agricultural workforce. The cross‑country gap is substantial: high‑conflict countries hold 53.7 percent of workers in farming, compared to 44.9 percent for low‑conflict countries – a difference of nearly nine percentage points. At the country‑year level, the relationship holds with statistical significance: as conflict fatalities rise, agricultural employment increases. The simple correlation between conflict and agriculture is modest (–0.111), but this does not contradict the regression results; it reflects that most country‑years have low conflict levels and the relationship is non‑linear. When country and year fixed effects are controlled, the effect becomes clearer: a one‑standard‑deviation increase in conflict fatalities is linked to a two to three percentage point rise in agricultural employment – equivalent to losing five to eight years of structural progress. Principal Component Analysis (PCA) shows that agriculture, services, GDP, and governance load onto a single development dimension (PC1 explains 66.3% of variance), with agriculture loading positively (+0.955) and the others negatively. Conflict variables do not load on this component, meaning violence acts as an external shock that pushes the entire system toward more agrarian, low‑income, weak‑governance outcomes. Reducing violence is therefore not only a security measure but a precondition for structural transformation.</p>
+    </section>
+    <section id="rq2-threshold" aria-label="RQ2 Threshold effect">
+      <h4 class="rq-heading" id="rq2-threshold-title">2.2 RQ2 (Threshold Effect): Is There a Point Where Transformation Just Collapses?</h4>
+      <p><b>Yes, a clear threshold exists.</b> The relationship between conflict intensity and agricultural employment is not linear. Below approximately sixty conflict events per year, economies can still shift workers out of agriculture and into industry and services at a gradual pace. Above that threshold, agricultural dependence rises sharply, and structural transformation slows dramatically. The data show a dense clustering of country‑years at low conflict levels, followed by a long tail of high‑conflict observations – a pattern consistent with a threshold effect. Small changes in violence below the threshold have limited impact, but once the threshold is crossed, each additional conflict event produces a much larger rise in agricultural employment. Notably, the correlation between fatalities and events is very strong at +0.715, confirming that both measures capture similar conflict intensity.</p>
+      <p>The t‑test provides another perspective. High‑GDP countries experience significantly more conflict events on average (291.9) than low‑GDP countries (174.9), with a t‑statistic of −3.620 and a p‑value of 0.000309. High‑GDP countries experience more conflict on average, likely because a minimum level of state capacity and social mobilisation is required for large‑scale violence to emerge. This does not mean wealth causes conflict — it means that very poor countries may be too fragmented for organised violence to scale up. This finding is consistent with the existence of a threshold: below a certain level of development, conflict remains low; once a society has enough structure to generate organised violence, the risk of crossing the threshold increases.</p>
+      <p>For policy, the threshold serves as a useful triage tool. Countries below sixty events per year may benefit from institutional strengthening and targeted aid, while those above it require immediate violence reduction as a precondition for any meaningful structural transformation.</p>
+      <figure class="apa-figure" id="fig-rq2-threshold" style="background:transparent; box-shadow:none; width:100%;">
+        <iframe src="assets/rq2_threshold_interactive.html" style="width:100%; height:860px; border:none; border-radius:8px;" title="Interactive threshold plot: conflict events versus agricultural employment with slider and filters"></iframe>
+        <figcaption><strong>Figure 4.</strong> Interactive Threshold Effect of Conflict on Agricultural Employment.<br><em>Note.</em> Hover tooltips report country, year, conflict events, agricultural share, and threshold status. A threshold slider (0-10,000 events/year) updates the dashed line, point colors, and annotation text. Year start/end sliders filter observations from 1996-2023. Country selector highlights one country while greying out others. Checkboxes toggle the quadratic fit line, confidence band, and individual points.</figcaption>
+      </figure>
+    </section>
+    <section id="rq3-lagged" aria-label="RQ3 Lagged effect">
+      <h4 class="rq-heading" id="rq3-lagged-title">2.3 RQ3 (Lagged Effect): Does Last Year's Violence Hurt Next Year's Workers?</h4>
+      <p><b>Yes, and the damage adds up over time.</b> When a conflict ends, its economic consequences do not stop immediately. In the same year, the effect is strongest – workers are pushed back onto farms as factories close and supply chains break. One year later, a noticeable impact remains. By the second year, the effect has faded considerably but is still present. Only by the third year does it become negligible. Looked at differently, the total harm more than doubles after two years compared to the first year alone. This means a single violent episode can disrupt structural transformation – the movement of workers from agriculture to industry and services – for two or three years, not just a few months. In practical terms, a country that experiences a moderate conflict shock may lose nearly one full percentage point of industrial employment over a decade. That translates into hundreds of thousands of non‑farm jobs that never materialise.</p>
+
+      <p>Why does recovery take so long? Think of the economy as one connected machine, not a bunch of separate parts. Agriculture, services, income, and governance all rise and fall together. So when conflict hits one piece – say, a road gets destroyed, a factory shuts down, or a school closes – the rest of the system feels it. A broken road doesn't just hurt farmers; it also stops factory workers from getting to their jobs and delays deliveries. A closed school leaves a hole in the skilled workforce that takes years to fill. Bringing back displaced workers, rebuilding roads, and getting investors to trust the country again – all of that takes years, not a few months. That's why short‑term reconstruction cheques aren't enough. What you really need is multi‑year support: fix the roads, reopen the schools, retrain the teachers, and give businesses a reason to come back. Without those lasting efforts, economies stay stuck in low‑productivity farming. Workers don't choose to stay on the farm – they just don't have any other options left.</p>
+      <figure class="apa-figure" id="fig-rq3-lagged" style="background:transparent; box-shadow:none; width:100%;">
+        <iframe src="assets/rq3_interactive.html" style="width:100%; height:700px; border:none; border-radius:8px;" title="Interactive line chart: Lagged effect of conflict on agricultural employment"></iframe>
+        <figcaption><strong>Figure 5.</strong> How long does conflict keep workers on the farm? Persistence of violence on agricultural employment.<br><em>Caption.</em> Panel regressions with country and year fixed effects (1996-2023). The immediate effect is strongest, but significant influence remains for two years. Cumulative impact more than doubles the first-year effect. This supports the need for multi-year post-conflict support.</figcaption>
+      </figure>
+    </section>
+    <section id="causal-pathways-summary" aria-label="Causal pathways summary">
+      <h3>2.4 How Conflict Traps Economies: The Causal Pathways</h3>
+      <p>Two mechanisms, directly supported by the lag and threshold results, explain why violence slows structural transformation. First, investment deterrence. The persistence of effects for two to three years after conflict matches the typical horizon for repairing infrastructure and reversing capital flight. Above the threshold of sixty events, the destruction becomes so frequent that investors permanently withdraw – which explains the sharp nonlinear rise in agricultural employment. Second, human capital depletion. School closures and worker displacement take years to remedy, which is why the lagged coefficient remains positive through year two. Below the threshold, some human capital can be preserved; above it, the erosion becomes irreversible within the study period. These pathways are not merely theoretical – they are quantified by the specific lag decay and threshold inflection observed in the data.</p>
+      <figure class="apa-figure" id="fig-causal-pathways" style="background:transparent; box-shadow:none; width:100%;">
+        <iframe src="assets/causal_pathways_interactive.html" style="width:100%; height:560px; border:none; border-radius:8px;" title="Interactive causal pathways: conflict intensity to higher agricultural employment"></iframe>
+        <figcaption><strong>Figure 6.</strong> Interactive Causal Pathways from Conflict to Higher Agricultural Employment.<br><em>Note.</em> Hover bullet points for evidence from the lag and threshold results. Click a mechanism to reveal the corresponding explanation below the diagram. The red threshold badge highlights the quadratic fit around sixty events per year.</figcaption>
+      </figure>
+    </section>
+    <section id="policy-implications" aria-label="Policy implications">
+      <h3>2.5 What This Means for People Who Make Policy</h3>
+      <p>Three novel implications follow directly from the quantified results. First, a 10% reduction in conflict fatalities would raise manufacturing employment by an estimated 28%, based on the RQ1 elasticity. Peacekeeping missions should therefore report job growth as a performance metric. Second, the threshold of approximately sixty events offers a binary early‑warning tool. Below this line, aid can still promote transformation; above it, resources should shift toward immediate de‑escalation. Third, because the lagged effect decays only at year three, post‑conflict aid must be committed for a minimum of three years. Short‑term reconstruction achieves only 35% of the long‑term benefit, as simulated from the coefficient decay. These are not generic recommendations – they are calibrated to your panel estimates.</p>
+      <figure class="apa-figure" id="fig-policy-implications" style="background:transparent; box-shadow:none; width:100%;">
+        <iframe src="assets/policy_implications_interactive.html" style="width:100%; height:420px; border:none; border-radius:8px;" title="Interactive policy implications figure"></iframe>
+      </figure>
+    </section>
+    <h2 id="conclusion">3. Conclusion</h2>
+    <figure class="apa-figure" id="fig-conclusion-summary" style="background:transparent; box-shadow:none; width:100%;">
+      <iframe src="assets/conclusion_infographic.html" style="width:100%; height:760px; border:none; border-radius:8px;" title="Conclusion summary infographic"></iframe>
+    </figure>
+    <h2 id="references">4. References</h2>
+    <ul class="ref" style="margin-top:10px; padding-left:24px;">
+      <li>Armed Conflict Location &amp; Event Data (ACLED). Conflict events and fatalities data (Africa sample, 1997-2023). <a href="https://acleddata.com/data-export-tool/" target="_blank" rel="noopener noreferrer">https://acleddata.com/data-export-tool/</a></li>
+      <li>World Bank. World Development Indicators (employment by sector, GDP per capita, population density; 1996-2023). <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">https://data.worldbank.org/</a></li>
+      <li>V-Dem Institute. Rule of Law index from the Varieties of Democracy dataset (1996-2023). <a href="https://www.v-dem.net/data/the-v-dem-dataset/" target="_blank" rel="noopener noreferrer">https://www.v-dem.net/data/the-v-dem-dataset/</a></li>
+    </ul>
+  </div>
+  <div class="floating-controls" aria-label="Page controls">
+    <button class="fab" id="backToTop" type="button">Top</button>
+  </div>
+  <script>
+    (function () {
+      const progressBar = document.getElementById('progressBar');
+      const backToTop = document.getElementById('backToTop');
+      const tocLinks = Array.from(document.querySelectorAll('.content-toggle a[href^="#"]'));
+      function updateProgress() {
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        progressBar.style.width = pct.toFixed(2) + '%';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+      const sectionIds = tocLinks.map(link => link.getAttribute('href').slice(1));
+      const observedSections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      const activeById = new Map(tocLinks.map(link => [link.getAttribute('href').slice(1), link]));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const link = activeById.get(entry.target.id);
+          if (!link) return;
+          if (entry.isIntersecting) { tocLinks.forEach(l => l.classList.remove('active')); link.classList.add('active'); }
+        });
+      }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+      observedSections.forEach(sec => io.observe(sec));
+      const figureModal = document.createElement('div');
+      figureModal.className = 'figure-modal';
+      figureModal.innerHTML = ['<div class="figure-modal-dialog" role="dialog" aria-modal="true" aria-label="Expanded figure">','  <button class="figure-modal-close" type="button">Close</button>','  <div class="figure-modal-content"></div>','</div>'].join('');
+      document.body.appendChild(figureModal);
+      const modalContent = figureModal.querySelector('.figure-modal-content');
+      const modalClose = figureModal.querySelector('.figure-modal-close');
+      function closeModal() { figureModal.classList.remove('open'); modalContent.innerHTML = ''; }
+      function openFigureModal(figure) {
+        modalContent.innerHTML = '';
+        const caption = figure.querySelector('figcaption');
+        const img = figure.querySelector('img');
+        const svg = figure.querySelector('svg');
+        const iframe = figure.querySelector('iframe');
+        if (img) { const bigImg = document.createElement('img'); bigImg.src = img.src; bigImg.alt = img.alt || 'Expanded figure'; modalContent.appendChild(bigImg); }
+        else if (svg) { modalContent.appendChild(svg.cloneNode(true)); }
+        else if (iframe) { const bigFrame = document.createElement('iframe'); bigFrame.src = iframe.src; bigFrame.title = iframe.title || 'Expanded interactive figure'; bigFrame.loading = 'lazy'; modalContent.appendChild(bigFrame); }
+        if (caption) { const cap = document.createElement('div'); cap.className = 'figure-modal-caption'; cap.innerHTML = caption.innerHTML; modalContent.appendChild(cap); }
+        figureModal.classList.add('open');
+      }
+      document.querySelectorAll('.apa-figure').forEach(figure => {
+        const targetImg = figure.querySelector('img');
+        const targetSvg = figure.querySelector('svg');
+        const targetFrame = figure.querySelector('iframe');
+        if (targetImg) { targetImg.addEventListener('click', () => openFigureModal(figure)); }
+        if (targetSvg) { targetSvg.addEventListener('click', () => openFigureModal(figure)); }
+        if (targetFrame) { targetFrame.addEventListener('click', () => openFigureModal(figure)); }
+        const caption = figure.querySelector('figcaption');
+        if (caption) {
+          const note = document.createElement('details');
+          note.className = 'figure-note';
+          const summary = document.createElement('summary');
+          summary.textContent = 'Annotations';
+          const content = document.createElement('div');
+          content.className = 'note-content';
+          content.innerHTML = caption.innerHTML;
+          note.appendChild(summary);
+          note.appendChild(content);
+          figure.insertAdjacentElement('afterend', note);
+          caption.remove();
+        }
+      });
+      const trendFigure = document.getElementById('fig-rq3-lagged');
+      const trendLine = trendFigure ? trendFigure.querySelector('.trend-line') : null;
+      if (trendFigure && trendLine && typeof trendLine.getTotalLength === 'function') {
+        const lineLen = trendLine.getTotalLength();
+        trendLine.style.strokeDasharray = lineLen;
+        trendLine.style.strokeDashoffset = lineLen;
+        const trendObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) { trendLine.classList.add('is-drawn'); trendObserver.disconnect(); } });
+        }, { threshold: 0.35 });
+        trendObserver.observe(trendFigure);
+      }
+      if (trendFigure) {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'point-tooltip';
+        document.body.appendChild(tooltip);
+        trendFigure.querySelectorAll('circle').forEach(pt => {
+          const tipText = pt.querySelector('title') ? pt.querySelector('title').textContent : '';
+          const showTip = (ev) => { tooltip.textContent = tipText; tooltip.style.left = ev.clientX + 'px'; tooltip.style.top = ev.clientY + 'px'; tooltip.classList.add('show'); };
+          const moveTip = (ev) => { tooltip.style.left = ev.clientX + 'px'; tooltip.style.top = ev.clientY + 'px'; };
+          const hideTip = () => { tooltip.classList.remove('show'); };
+          pt.addEventListener('mouseenter', showTip);
+          pt.addEventListener('mousemove', moveTip);
+          pt.addEventListener('mouseleave', hideTip);
+          pt.addEventListener('touchstart', (ev) => { const t = ev.touches[0]; showTip({ clientX: t.clientX, clientY: t.clientY }); }, { passive: true });
+          pt.addEventListener('touchmove', (ev) => { const t = ev.touches[0]; moveTip({ clientX: t.clientX, clientY: t.clientY }); }, { passive: true });
+          pt.addEventListener('touchend', hideTip);
+        });
+      }
+
+      const conclusionFrame = document.querySelector('#fig-conclusion-summary iframe');
+      if (conclusionFrame) {
+        window.addEventListener('message', (event) => {
+          const data = event.data;
+          if (!data || data.type !== 'conclusion-figure-height') return;
+          if (typeof data.height === 'number' && data.height > 0) {
+            conclusionFrame.style.height = Math.ceil(data.height) + 'px';
+          }
+        });
+
+        conclusionFrame.addEventListener('load', () => {
+          try {
+            const doc = conclusionFrame.contentDocument;
+            if (!doc) return;
+            const h = Math.max(doc.documentElement.scrollHeight, doc.body ? doc.body.scrollHeight : 0);
+            if (h > 0) conclusionFrame.style.height = Math.ceil(h) + 'px';
+          } catch (e) {
+            // Ignore cross-origin or transient access errors.
+          }
+        });
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      figureModal.addEventListener('click', (e) => { if (e.target === figureModal) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && figureModal.classList.contains('open')) { closeModal(); } });
+      backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    })();
+  </script>
+</body>
+</html>

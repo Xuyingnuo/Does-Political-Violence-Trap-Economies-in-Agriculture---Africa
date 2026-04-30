@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter,Roboto,system-ui,-apple-system,sans-serif;background:#fff;color:#1f2937}
+  .wrap{max-width:980px;margin:0 auto;padding:16px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fafafa}
+  .head{background:#f3f4f6;padding:10px 16px;font-weight:700;font-size:0.95rem;border-bottom:1px solid #e5e7eb}
+  .head.right{border-left:1px solid #e5e7eb}
+  .cell{padding:14px 16px;border-bottom:1px solid #e5e7eb;background:#fff}
+  .cell.right{border-left:1px solid #e5e7eb}
+  .lesson{cursor:pointer;border:1px solid transparent;border-radius:8px;padding:10px 10px;transition:background 0.15s,border-color 0.15s}
+  .lesson:hover{background:#f8fafc;border-color:#cbd5e1}
+  .lesson h4{font-size:0.95rem;margin-bottom:4px}
+  .lesson p{font-size:0.9rem;color:#4b5563}
+  .impact{display:flex;align-items:center;gap:10px}
+  .impact-bar{flex:1;background:#e5e7eb;border-radius:6px;height:28px;position:relative;min-width:100px}
+  .impact-fill{position:absolute;top:0;left:0;height:100%;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.82rem;font-weight:700}
+  .impact-label{font-size:0.85rem;color:#4b5563;white-space:nowrap}
+  .info{position:relative;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:999px;background:#e2e8f0;color:#1f2937;font-size:0.72rem;font-weight:700;cursor:default}
+  .info .tip{display:none;position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:6px 10px;border-radius:6px;font-size:0.75rem;white-space:nowrap;box-shadow:0 6px 14px rgba(0,0,0,0.2)}
+  .info .tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#111827}
+  .info:hover .tip{display:block}
+  .panel{margin-top:12px;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;background:#fafafa;font-size:0.92rem;min-height:72px}
+  .panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .panel-title{font-weight:700;font-size:0.9rem;color:#111827}
+  .reset{border:1px solid #d1d5db;background:#fff;border-radius:6px;padding:4px 8px;font-size:0.78rem;cursor:pointer}
+  .reset:hover{background:#f3f4f6}
+  @media (max-width:720px){
+    .grid{grid-template-columns:1fr}
+    .head.right,.cell.right{border-left:none}
+    .cell.right{border-top:1px solid #e5e7eb}
+  }
+</style>
+</head><body>
+<div class="wrap">
+  <div class="grid">
+    <div class="head">Lesson</div>
+    <div class="head right">Estimated Impact</div>
+
+    <div class="cell">
+      <div class="lesson" data-lesson="1">
+        <h4>1. Judge peacekeeping by job growth, not just by fewer deaths.</h4>
+        <p>A 10% drop in conflict fatalities could unlock hundreds of thousands of non-farm jobs.</p>
+      </div>
+    </div>
+    <div class="cell right">
+      <div class="impact">
+        <div class="impact-bar"><div class="impact-fill" style="width:72%;background:#059669">+28%</div></div>
+        <span class="impact-label">Manufacturing job growth</span>
+        <span class="info">ℹ️
+          <span class="tip">Based on panel regression, RQ1 elasticity.</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lesson" data-lesson="2">
+        <h4>2. There's probably a violence threshold.</h4>
+        <p>Below that line, aid and investment can still work. Above it, transformation collapses.</p>
+      </div>
+    </div>
+    <div class="cell right">
+      <div class="impact">
+        <div class="impact-bar"><div class="impact-fill" style="width:50%;background:#f59e0b">Binary</div></div>
+        <span class="impact-label">Threshold early warning</span>
+        <span class="info">ℹ️
+          <span class="tip">Quadratic fit threshold ≈60 events.</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="cell">
+      <div class="lesson" data-lesson="3">
+        <h4>3. Damage lingers for years.</h4>
+        <p>Even after a ceasefire, economies need long-term support.</p>
+      </div>
+    </div>
+    <div class="cell right" style="border-bottom:none;">
+      <div class="impact">
+        <div class="impact-bar"><div class="impact-fill" style="width:85%;background:#059669">~35%</div></div>
+        <span class="impact-label">Long-term aid effectiveness</span>
+        <span class="info">ℹ️
+          <span class="tip">Lagged coefficient decay.</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Evidence from the analysis</div>
+      <button class="reset" type="button" id="reset-panel">Reset</button>
+    </div>
+    <div id="panel-text">Click on any policy lesson to see the detailed evidence from the analysis.</div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var panel = document.getElementById('panel-text');
+    var reset = document.getElementById('reset-panel');
+    var textByLesson = {
+      1: "A 10% reduction in conflict fatalities would raise manufacturing employment by an estimated 28%, based on the RQ1 elasticity. Peacekeeping missions should therefore report job growth as a performance metric.",
+      2: "The threshold of approximately sixty events offers a binary early-warning tool. Below this line, aid can still promote transformation; above it, resources should shift toward immediate de-escalation.",
+      3: "Because the lagged effect decays only at year three, post-conflict aid must be committed for a minimum of three years. Short-term reconstruction achieves only 35% of the long-term benefit, as simulated from the coefficient decay."
+    };
+    document.querySelectorAll('.lesson').forEach(function(el){
+      el.addEventListener('click', function(){
+        var key = this.getAttribute('data-lesson');
+        panel.textContent = textByLesson[key] || '';
+      });
+    });
+    reset.addEventListener('click', function(){
+      panel.textContent = 'Click on any policy lesson to see the detailed evidence from the analysis.';
+    });
+  })();
+</script>
+</body></html>

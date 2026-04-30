@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Interactive Conclusion Summary</title>
+<style>
+  :root {
+    --bg: linear-gradient(145deg, #f6f9ff 0%, #eef4ff 45%, #f7fbff 100%);
+    --surface: #ffffff;
+    --surface-soft: #f7faff;
+    --ink: #1f2937;
+    --muted: #4b5563;
+    --line: #dbe5f3;
+    --accent: #2563eb;
+    --accent-soft: #dbeafe;
+    --shadow: 0 8px 24px rgba(30, 64, 175, 0.08);
+  }
+
+  body.dark {
+    --bg: linear-gradient(145deg, #0f172a 0%, #111827 45%, #0b1220 100%);
+    --surface: #111827;
+    --surface-soft: #0f172a;
+    --ink: #e5e7eb;
+    --muted: #9ca3af;
+    --line: #293548;
+    --accent: #60a5fa;
+    --accent-soft: #1e3a5f;
+    --shadow: 0 10px 28px rgba(2, 6, 23, 0.45);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Inter, Roboto, "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 18px;
+    font-size: 18px;
+    line-height: 1.65;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: color-mix(in srgb, var(--surface) 95%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  button {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+    padding: 12px;
+    min-height: 122px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 18px rgba(37, 99, 235, 0.12);
+  }
+
+  .card.active {
+    border-color: var(--accent);
+    background: linear-gradient(180deg, var(--accent-soft) 0%, var(--surface) 100%);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 26%, transparent);
+  }
+
+  .card .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+  }
+
+  .card .label {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .card .stat {
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--accent);
+  }
+
+  .detail {
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--accent);
+    border-radius: 10px;
+    background: var(--surface-soft);
+    padding: 13px 14px;
+    min-height: 126px;
+  }
+
+  .detail h4 {
+    margin: 0 0 8px;
+    font-size: 1.06rem;
+  }
+
+  .detail p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.62;
+    color: var(--muted);
+  }
+
+  .quote {
+    margin-top: 12px;
+    border-radius: 10px;
+    padding: 11px 13px;
+    background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 40%, #1e40af 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.58;
+    font-weight: 600;
+  }
+
+  details {
+    margin-top: 10px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.98rem;
+    font-weight: 700;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  .full-conclusion {
+    margin: 0;
+    padding: 12px;
+    font-size: 0.96rem;
+    line-height: 1.68;
+    color: var(--muted);
+  }
+
+  .footer {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .pulse {
+    animation: pulse 0.42s ease;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+  }
+
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 560px) {
+    body { padding: 10px; }
+    .wrap { padding: 12px; border-radius: 12px; }
+    .top { flex-direction: column; align-items: flex-start; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap" id="app">
+    <div class="top">
+      <div class="actions">
+        <button id="modeToggle" type="button" aria-label="Toggle light and dark mode">Toggle mode</button>
+        <button id="resetBtn" type="button" aria-label="Reset selected finding">Reset</button>
+      </div>
+    </div>
+
+    <section class="cards" aria-label="Conclusion findings">
+      <article class="card" data-key="scope" tabindex="0" role="button" aria-label="Scope finding">
+        <div class="icon" aria-hidden="true">&#127760;</div>
+        <div class="label">Scope</div>
+        <div class="stat">46 countries | 27 years</div>
+      </article>
+
+      <article class="card" data-key="direct" tabindex="0" role="button" aria-label="Direct effect finding">
+        <div class="icon" aria-hidden="true">&#127806;</div>
+        <div class="label">Direct effect</div>
+        <div class="stat">+8-10 p.p. in agriculture</div>
+      </article>
+
+      <article class="card" data-key="threshold" tabindex="0" role="button" aria-label="Threshold finding">
+        <div class="icon" aria-hidden="true">&#9888;&#65039;</div>
+        <div class="label">Threshold</div>
+        <div class="stat">~60 conflict events/year</div>
+      </article>
+
+      <article class="card" data-key="persistence" tabindex="0" role="button" aria-label="Persistence finding">
+        <div class="icon" aria-hidden="true">&#9201;&#65039;</div>
+        <div class="label">Persistence</div>
+        <div class="stat">2-3 years after violence</div>
+      </article>
+
+      <article class="card" data-key="payoff" tabindex="0" role="button" aria-label="Policy payoff finding">
+        <div class="icon" aria-hidden="true">&#128188;</div>
+        <div class="label">Policy payoff</div>
+        <div class="stat">1% drop -> large job gains</div>
+      </article>
+    </section>
+
+    <section class="detail" id="detailPanel" aria-live="polite">
+      <h4>Evidence from the conclusion</h4>
+      <p>Click a card to explore how conflict intensity, thresholds, and lagged effects shape structural transformation and policy choices.</p>
+    </section>
+
+    <div class="quote">Peace is not only a moral imperative – it is a practical economic strategy for job creation and structural transformation.</div>
+
+    <details>
+      <summary>Read the full conclusion</summary>
+      <p class="full-conclusion">Political violence is not merely a humanitarian concern but a structural barrier to economic development. Across 46 African countries over 27 years, three consistent findings emerge. Higher conflict intensity directly raises agricultural employment – high-conflict countries hold eight to ten percentage points more workers on farms. A clear threshold appears at roughly sixty conflict events per year; below it, economies can still shift labour into industry and services, but above it, structural transformation stalls. The effect lingers for two to three years after violence subsides, rendering short-term recovery inadequate. Conflict destroys infrastructure and depletes human capital through displacement and school closures, trapping workers in low-productivity agriculture. Reducing violence yields measurable returns: each percentage point decline in agricultural employment translates into hundreds of thousands of non-farm jobs. For governments and donors, the evidence calls for targeted conflict reduction in hotspot countries such as Nigeria and Sudan, using the threshold as an early-warning signal, and committing to multi-year post-conflict support. Peace is not only a moral imperative – it is a practical economic strategy for job creation and structural transformation.</p>
+    </details>
+
+    <div class="footer">Sources: ACLED, World Bank, V-Dem (1996-2023)</div>
+  </div>
+
+<script>
+  (function () {
+    const content = {
+      scope: {
+        title: "Scope",
+        text: "The evidence covers 46 African countries over 27 years (1996-2023), providing long-horizon panel evidence on conflict and structural transformation across highly diverse contexts."
+      },
+      direct: {
+        title: "Direct effect",
+        text: "High-conflict countries hold 8-10 percentage points more workers in agriculture. A one standard deviation increase in fatalities is associated with a 2-3 p.p. rise in agricultural employment, equivalent to about 5-8 years of lost transformation progress."
+      },
+      threshold: {
+        title: "Threshold",
+        text: "A threshold appears at about 60 conflict events per year. Below this level, structural transformation can still proceed; above it, transition out of agriculture stalls and low-productivity employment persists."
+      },
+      persistence: {
+        title: "Persistence",
+        text: "The conflict effect lasts 2-3 years after violence subsides, so short-term recovery is inadequate. Mechanisms include infrastructure destruction and human capital depletion through displacement and school closures."
+      },
+      payoff: {
+        title: "Policy payoff",
+        text: "Each 1% drop in agricultural employment corresponds to hundreds of thousands of additional non-farm jobs. Priorities: target Nigeria and Sudan, use the threshold as an early-warning signal, and commit to multi-year support."
+      }
+    };
+
+    const app = document.getElementById("app");
+    const cards = Array.from(document.querySelectorAll(".card"));
+    const panel = document.getElementById("detailPanel");
+    const resetBtn = document.getElementById("resetBtn");
+    const modeToggle = document.getElementById("modeToggle");
+    const detailsEl = document.querySelector("details");
+
+    function notifyParentHeight() {
+      const root = document.documentElement;
+      const body = document.body;
+      const height = Math.max(
+        root ? root.scrollHeight : 0,
+        body ? body.scrollHeight : 0,
+        root ? root.offsetHeight : 0,
+        body ? body.offsetHeight : 0
+      );
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: "conclusion-figure-height", height: height }, "*");
+      }
+    }
+
+    function setActiveCard(target) {
+      cards.forEach((card) => card.classList.remove("active"));
+      if (!target) {
+        panel.innerHTML = "<h4>Evidence from the conclusion</h4><p>Click a card to explore how conflict intensity, thresholds, and lagged effects shape structural transformation and policy choices.</p>";
+        requestAnimationFrame(notifyParentHeight);
+        return;
+      }
+
+      target.classList.add("active");
+      const item = content[target.dataset.key];
+      panel.innerHTML = "<h4>" + item.title + "</h4><p>" + item.text + "</p>";
+      app.classList.remove("pulse");
+      void app.offsetWidth;
+      app.classList.add("pulse");
+      requestAnimationFrame(notifyParentHeight);
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => setActiveCard(card));
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setActiveCard(card);
+        }
+      });
+    });
+
+    resetBtn.addEventListener("click", () => setActiveCard(null));
+    modeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      requestAnimationFrame(notifyParentHeight);
+    });
+
+    if (detailsEl) {
+      detailsEl.addEventListener("toggle", () => requestAnimationFrame(notifyParentHeight));
+    }
+
+    window.addEventListener("load", notifyParentHeight);
+    window.addEventListener("resize", notifyParentHeight);
+    requestAnimationFrame(notifyParentHeight);
+  })();
+</script>
+</body>
+</html>
